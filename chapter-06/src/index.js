@@ -1,12 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
+import React, { createContext } from "react";
+import colors from "./color-data";
+import { render } from "react-dom";
 import App from "./App";
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
+export const ColorContext = createContext();
+
+render(
+  <ColorContext.Provider value={{ colors }}>
     <App />
-  </React.StrictMode>,
-  rootElement
+  </ColorContext.Provider>,
+  document.getElementById("root")
 );
