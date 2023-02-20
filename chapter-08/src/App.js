@@ -3,7 +3,7 @@ import { FixedSizeList } from "react-window";
 import { faker } from '@faker-js/faker';
 
 const bigList = [...Array(5000)].map(() => ({
-  name: faker.name.findName(),
+  name: faker.name.fullName(),
   email: faker.internet.email(),
   avatar: faker.internet.avatar()
 }));
@@ -21,8 +21,9 @@ export default function App() {
       </p>
     </div>
   );
+   const renderItem=item =>JSON.stringify(item)
 
-  return (
+  return <>
     <FixedSizeList
       height={window.innerHeight}
       width={window.innerWidth - 20}
@@ -31,5 +32,20 @@ export default function App() {
     >
       {renderRow}
     </FixedSizeList>
-  );
+      <SlowList
+          data={bigList}
+          renderItem={renderItem}>
+      </SlowList>
+
+      </>
+
+}
+function SlowList({ data = [], renderItem,  }) {
+    return  (
+        <ul>
+            {data.map((item, i) => (
+                <li key={i}>{renderItem(item)}</li>
+            ))}
+        </ul>
+    );
 }

@@ -1,4 +1,4 @@
-# Chapter 9: Suspense
+# `Chapter 9: Suspense`
 
 Suspense is an experimental feature of React that's used to handle loading states. In this chapter, we'll take a closer look at some of the stable features, some experimental features, and the React reconciliation algorithm.
 
